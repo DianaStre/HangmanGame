@@ -16,23 +16,46 @@
 
 # Deadline: 3 Octombrie
 
-animal = ["dog", "cat", "chicken", "kangaroo", "elephant", "dolphin", "penguin", "pigeon", "lion", "tardigrade"]
+import random
 
+# List of 10 words defined (as a list)
+animals = ["cat", "dog", "elephant", "mouse", "kangaroo", "tardigrade", "octopus", "dolphin", "shark", "stork"]
 
-# Choose a random word from the list
-def choose_word():
-    return random.choice(animal)
+# Choose a random word from the provided list
+word = random.choice(animals).lower()
+guessed_letters = []  # To store guessed letters
+tries = 8  # User can adjust here the number of total tries
 
-# Display the word with guessed letters and underscores for unguessed ones
-def display_word(word, guessed_letters):
+# Function to display the word with underscores for unguessed letters
+def display_word():
     return " ".join([letter if letter in guessed_letters else "_" for letter in word])
 
-# Track guessed letters, while the player gets 8 tries.
-def play_hangman():
-    word = choose_word().lower()
-    guessed_letters = set()
-    tries = 8
-    print("Welcome to Hangman!")
-    print(f"Your word has {len(word)} letters.")
-# Display the unguessed word as underscores
-    print(display_word(word, guessed_letters))
+print("Welcome to 💀Hell💀, there is only one way out!")
+print(display_word())  # Display the unguessed word as underscores
+
+# Main game loop
+while tries > 0:
+    guess = input(f"\nYou have {tries} tries left to escape 💀Hell💀. Guess a letter: ").lower()
+
+    # Ensures that only one letter is entered at a time
+    if len(guess) != 1 or not guess.isalpha():
+        print("Please enter a single letter, there are no quick exits.")
+        continue
+
+    # If the player guesses correctly
+    if guess in word:
+        guessed_letters.append(guess)
+        print(f"Good guess!😎 '{guess}' is in the word. One step closer to freedom!")
+    else:
+        tries -= 1  # If guessed incorrectly, reduces tries (by one)
+        print(f"Wrong guess!😬 '{guess}' is not in the word. Get comfortable!")
+
+    # Display current progress before another guess
+    print(display_word())
+
+    # Check if player has guessed the word
+    if all(letter in guessed_letters for letter in word):
+        print(f"✨Congratulations! You've guessed the word: {word}. You may now leave Hell!✨")
+        break
+else:
+    print(f"😞Sorry, you can't leave. The word was: {word}")
