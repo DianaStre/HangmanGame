@@ -30,7 +30,7 @@ tries = 8  # User can adjust here the number of total tries
 def display_word():
     return " ".join([letter if letter in guessed_letters else "_" for letter in word])
 
-print("Welcome to 💀Hell💀, there is only one way out!")
+print("Welcome to 😈Hell😈, there is only one way out!")
 print(display_word())  # Display the unguessed word as underscores
 
 # Main game loop
@@ -48,7 +48,7 @@ while tries > 0:
         print(f"Good guess!😎 '{guess}' is in the word. One step closer to freedom!")
     else:
         tries -= 1  # If guessed incorrectly, reduces tries (by one)
-        print(f"Wrong guess!😬 '{guess}' is not in the word. Get comfortable!")
+        print(f"Wrong guess!💀 '{guess}' is not in the word. Get comfortable!")
 
     # Display current progress before another guess
     print(display_word())
