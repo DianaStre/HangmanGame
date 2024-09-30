@@ -33,7 +33,7 @@ def display_word():
 print("Welcome to 😈Hell😈, there is only one way out!")
 print(display_word())  # Display the unguessed word as underscores
 
-# Main game loop
+# Main game loop, start with a function to allow input from user
 while tries > 0:
     guess = input(f"\nYou have {tries} tries left to escape 💀Hell💀. Guess a letter: ").lower()
 
