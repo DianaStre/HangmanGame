@@ -24,7 +24,7 @@ animals = ["cat", "dog", "elephant", "mouse", "kangaroo", "tardigrade", "octopus
 # Choose a random word from the provided list
 word = random.choice(animals).lower()
 guessed_letters = []  # To store guessed letters
-tries = 8  # User can adjust here the number of total tries
+mistakes = 8  # User can adjust here the number of total tries
 
 # Function to display the word with underscores for unguessed letters
 def display_word():
@@ -34,8 +34,9 @@ print("Welcome to 😈Hell😈, there is only one way out!")
 print(display_word())  # Display the unguessed word as underscores
 
 # Main game loop, start with a function to allow input from user
-while tries > 0:
-    guess = input(f"\nYou have {tries} tries left to escape 💀Hell💀. Guess a letter: ").lower()
+while mistakes > 0:
+    guess = input(f"You have {mistakes} mistakes left before you can no longer escape 💀Hell💀. "
+                  f"\nGuess a letter: ").lower()
 
     # Ensures that only one letter is entered at a time
     if len(guess) != 1 or not guess.isalpha():
@@ -47,8 +48,8 @@ while tries > 0:
         guessed_letters.append(guess)
         print(f"Good guess!😎 '{guess}' is in the word. One step closer to freedom!")
     else:
-        tries -= 1  # If guessed incorrectly, reduces tries (by one)
-        print(f"Wrong guess!💀 '{guess}' is not in the word. Get comfortable!")
+        mistakes -= 1  # If guessed incorrectly, reduces tries (by one)
+        print(f"Wrong guess!💀 '{guess}' is not in the word. Try again!")
 
     # Display current progress before another guess
     print(display_word())
