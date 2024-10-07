@@ -52,6 +52,5 @@ def joaca_spanzuratoarea():
     if input("\nVrei să mai joci o dată? (da/nu): ").lower() == "da":
         joaca_spanzuratoarea()
 
-
 # Pornește jocul
 joaca_spanzuratoarea()
